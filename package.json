@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/zakariachowdhury/greeterbot/issues"
   },
-  "homepage": "https://github.com/zakariachowdhury/greeterbot#readme"
+  "homepage": "https://github.com/zakariachowdhury/greeterbot#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "request": "^2.83.0",
+    "steem": "^0.6.7"
+  }
 }
