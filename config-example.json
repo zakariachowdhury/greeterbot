@@ -2,6 +2,8 @@
   "account": "your_bot_account_name",
   "posting_key": "your_private_posting_key",
   "tag":"introduceyourself",
+  "author_max_reputation": 89423059651,
+  "posting_interval": 25,
   "comments": [
     "Welcome to Steemit!",
     "Welcome to Steemit community."
