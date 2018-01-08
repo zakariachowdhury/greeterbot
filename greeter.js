@@ -25,10 +25,14 @@ function commentOnLatestContent() {
         limit: 1
     };
     steem.api.getDiscussionsByCreated(query, function(err, result) {
+        var content = result[0];
         if (err) {
             utils.log(err);
         } else {
-            postComment(result[0]);
+            postComment(content);
+            if (config.follow_user == true) {
+                followUser(content.author)
+            }
         }
     });
 }
@@ -62,6 +66,21 @@ function postComment(content) {
     } else {
         utils.log("Author @" + content.author + " has higher reputation");
     }
+}
+
+function followUser(author) {
+    let followReq = ["follow"];
+    followReq.push({follower: config.account, following: author, what: ["blog"]});
+    
+    const customJson = JSON.stringify(followReq);
+
+    steem.broadcast.customJson(config.posting_key, [], [config.account], "follow", customJson, function(err, result) {
+        if (err) {
+            utils.log(err);
+        } else {
+            utils.log("Following user: @" + author);
+        }
+    });
 }
 
 function getRandomComment() {
